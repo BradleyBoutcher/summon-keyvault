@@ -1,75 +1,53 @@
-# summon-conjur
+# summon-keyvault
 
 Conjur provider for [Summon](https://github.com/cyberark/summon).
-
-[![GitHub release](https://img.shields.io/github/release/cyberark/summon-conjur.svg)](https://github.com/cyberark/summon-conjur/releases/latest)
-[![pipeline status](https://gitlab.com/cyberark/summon-conjur/badges/master/pipeline.svg)](https://gitlab.com/cyberark/summon-conjur/pipelines)
-
-[![Github commits (since latest release)](https://img.shields.io/github/commits-since/cyberark/summon-conjur/latest.svg)](https://github.com/cyberark/summon-conjur/commits/master)
-
----
-
-**Note** Use the [summon-conjurcli](https://github.com/conjurinc/summon-conjurcli) provider if you are on Conjur v4.4.0 or earlier.
-
-**Note** You **must** set environment variable `CONJUR_MAJOR_VERSION=4` for this provider to work with Conjur v4.9.
 
 ## Install
 
 Pre-built binaries and packages are available from GitHub releases
-[here](https://github.com/cyberark/summon-conjur/releases).
-
-### Using summon-conjur with Conjur OSS 
-
-Are you using this project with [Conjur OSS](https://github.com/cyberark/conjur)? Then we 
-**strongly** recommend choosing the version of this project to use from the latest [Conjur OSS 
-suite release](https://docs.conjur.org/Latest/en/Content/Overview/Conjur-OSS-Suite-Overview.html). 
-Conjur maintainers perform additional testing on the suite release versions to ensure 
-compatibility. When possible, upgrade your Conjur version to match the 
-[latest suite release](https://docs.conjur.org/Latest/en/Content/ReleaseNotes/ConjurOSS-suite-RN.htm); 
-when using integrations, choose the latest suite release that matches your Conjur version. For any 
-questions, please contact us on [Discourse](https://discuss.cyberarkcommons.org/c/conjur/5).
+[here](https://github.com/bradleyboutcher/summon-keyvault/releases).
 
 ### Homebrew
 
 ```
 brew tap cyberark/tools
-brew install summon-conjur
+brew install summon-keyvault
 ```
 
 ### Linux (Debian and Red Hat flavors)
 
 `deb` and `rpm` files are attached to new releases.
-These can be installed with `dpkg -i summon-conjur_*.deb` and
-`rpm -ivh summon-conjur_*.rpm`, respectively.
+These can be installed with `dpkg -i summon-keyvault_*.deb` and
+`rpm -ivh summon-keyvault_*.rpm`, respectively.
 
 ### Auto Install
 
 **Note** Check the release notes and select an appropriate release to ensure support for your version of Conjur.
 
-Use the auto-install script. This will install the latest version of summon-conjur.
-The script requires sudo to place summon-conjur in dir `/usr/local/lib/summon`.
+Use the auto-install script. This will install the latest version of summon-keyvault.
+The script requires sudo to place summon-keyvault in dir `/usr/local/lib/summon`.
 
 ```
-curl -sSL https://raw.githubusercontent.com/cyberark/summon-conjur/master/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/bradleyboutcher/summon-keyvault/master/install.sh | bash
 ```
 
 ### Manual Install
-Otherwise, download the [latest release](https://github.com/cyberark/summon-conjur/releases) and extract it to the directory `/usr/local/lib/summon`.
+Otherwise, download the [latest release](https://github.com/bradleyboutcher/summon-keyvault/releases) and extract it to the directory `/usr/local/lib/summon`.
 
 ## Usage in isolation
 
-Give summon-conjur a variable name and it will fetch it for you and print the value to stdout.
+Give summon-keyvault a variable name and it will fetch it for you and print the value to stdout.
 
 ```sh-session
 $ # export CONJUR_MAJOR_VERSION=4 for Conjur v4.9
-$ summon-conjur prod/aws/iam/user/robot/access_key_id
+$ summon-keyvault prod/aws/iam/user/robot/access_key_id
 8h9psadf89sdahfp98
 ```
 
 ### Flags
 
 ```
-Usage of summon-conjur:
+Usage of summon-keyvault:
   -h, --help
 	show help (default: false)
   -V, --version
@@ -99,10 +77,10 @@ Wrap the `env` in summon:
 
 ```sh
 $ # export CONJUR_MAJOR_VERSION=4 for Conjur v4.9
-$ summon --provider summon-conjur env
+$ summon --provider summon-keyvault env
 ...
-AWS_ACCESS_KEY_ID=AKIAJS34242K1123J3K43
-AWS_SECRET_ACCESS_KEY=A23MSKSKSJASHDIWM
+AWS_ACCESS_KEY_ID=FOOBAR
+AWS_SECRET_ACCESS_KEY=FOOBARBIZ
 ...
 ```
 
@@ -120,7 +98,7 @@ Specifically, it loads configuration from:
  * Read `/etc/conjur.identity` as a `netrc` file. Note that the user running must either be in the group `conjur` or root to read the identity file.
  * Environment variables:
    * Version
-     * `CONJUR_MAJOR_VERSION` - must be set to `4` in order for summon-conjur to work with Conjur v4.9.
+     * `CONJUR_MAJOR_VERSION` - must be set to `4` in order for summon-keyvault to work with Conjur v4.9.
    * Appliance URLs
      * `CONJUR_APPLIANCE_URL`
      * `CONJUR_CORE_URL`

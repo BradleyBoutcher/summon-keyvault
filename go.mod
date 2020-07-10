@@ -1,4 +1,4 @@
-module github.com/cyberark/summon-conjur
+module github.com/cyberark/summon-keyvault
 
 go 1.13
 

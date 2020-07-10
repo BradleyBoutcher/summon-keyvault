@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/cyberark/summon-keyvault/pkg/summon_keyvault"
 	"os"
 
 	"github.com/cyberark/conjur-api-go/conjurapi"
-	"github.com/cyberark/summon-conjur/pkg/summon_conjur"
 	"github.com/karrick/golf"
 	log "github.com/sirupsen/logrus"
 )
@@ -42,7 +42,7 @@ func main() {
 	args := golf.Args()
 
 	if *version {
-		fmt.Println(summon_conjur.VERSION)
+		fmt.Println(summon_keyvault.VERSION)
 		os.Exit(0)
 	}
 	if *help {

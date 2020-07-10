@@ -5,7 +5,7 @@ set -e
 ARCH=`uname -m`
 
 if [ "${ARCH}" != "x86_64" ]; then
-  echo "summon-conjur only works on 64-bit systems"
+  echo "summon-keyvault only works on 64-bit systems"
   echo "exiting installer"
   exit 1
 fi
@@ -38,14 +38,14 @@ function do_download(){
   fi
 }
 
-LATEST_VERSION=$(curl -s https://api.github.com/repos/cyberark/summon-conjur/releases/latest | grep -o '"tag_name": "[^"]*' | grep -o '[^"]*$')
-BASEURL="https://github.com/cyberark/summon-conjur/releases/download/"
-URL=${BASEURL}"${LATEST_VERSION}/summon-conjur-${DISTRO}-amd64.tar.gz"
+LATEST_VERSION=$(curl -s https://api.github.com/repos/bradleyboutcher/summon-keyvault/releases/latest | grep -o '"tag_name": "[^"]*' | grep -o '[^"]*$')
+BASEURL="https://github.com/bradleyboutcher/summon-keyvault/releases/download/"
+URL=${BASEURL}"${LATEST_VERSION}/summon-keyvault-${DISTRO}-amd64.tar.gz"
 
-ZIP_PATH="${tmp_dir}/summon-conjur.tar.gz"
+ZIP_PATH="${tmp_dir}/summon-keyvault.tar.gz"
 do_download ${URL} ${ZIP_PATH}
 
-echo "Installing summon-conjur ${LATEST_VERSION} into /usr/local/lib/summon"
+echo "Installing summon-keyvault ${LATEST_VERSION} into /usr/local/lib/summon"
 
 if sudo -h >/dev/null 2>&1; then
   sudo mkdir -p /usr/local/lib/summon
@@ -56,4 +56,4 @@ else
 fi
 
 echo "Success!"
-echo "Run /usr/local/lib/summon/summon-conjur for usage"
+echo "Run /usr/local/lib/summon/summon-keyvault for usage"

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 CURRENT_DIR=$(pwd)
-MOUNT_DIR="/summon-conjur"
+MOUNT_DIR="/summon-keyvault"
 
 GORELEASER_IMAGE="goreleaser/goreleaser:latest"
 GORELEASER_ARGS="--rm-dist --snapshot"

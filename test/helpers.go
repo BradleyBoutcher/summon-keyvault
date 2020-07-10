@@ -47,12 +47,12 @@ func RunCommand(name string, arg ...string) (bytes.Buffer, bytes.Buffer, error) 
 }
 
 func WithoutArgs() {
-	Convey("Given summon-conjur is run with no arguments", func() {
+	Convey("Given summon-keyvault is run with no arguments", func() {
 		_, stderr, err := RunCommand(PackageName)
 
 		Convey("Returns with error", func() {
 			So(err, ShouldNotBeNil)
-			So(stderr.String(), ShouldEqual, `Usage of summon-conjur:
+			So(stderr.String(), ShouldEqual, `Usage of summon-keyvault:
   -h, --help
 	show help (default: false)
   -V, --version
@@ -64,4 +64,4 @@ func WithoutArgs() {
 	})
 }
 
-const PackageName = "summon-conjur"
+const PackageName = "summon-keyvault"
